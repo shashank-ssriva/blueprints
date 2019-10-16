@@ -1,17 +1,16 @@
-xl-deploy:
-  username: admin
-  password: admin
-  url: http://localhost:4516/
-  authmethod: http
-xl-release:
-  username: admin
-  password: admin
-  url: http://localhost:5516/
-  authmethod: http
 blueprint:
   current-repository: XL Blueprints
   repositories:
   - name: XL Blueprints
     type: http
-    url: https://dist.xebialabs.com/shashank-ssriva/blueprints/
-
+    url: https://dist.xebialabs.com/public/blueprints/9.0.4/
+xl-deploy:
+  authmethod: http
+  password: admin
+  url: http://localhost:4516/
+  username: admin
+xl-release:
+  authmethod: http
+  password: admin
+  url: http://localhost:5516/
+  username: admin
