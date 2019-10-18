@@ -49,7 +49,7 @@ To run the YAML that this blueprint generates, you need:
 
 This blueprint requires:
 
-* The application name
+* The application name.
 * The port where the application should be exposed
 * Docker images for a front-end and back-end service
 
