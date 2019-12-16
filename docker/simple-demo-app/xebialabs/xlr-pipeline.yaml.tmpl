@@ -24,7 +24,7 @@ spec:
                 deploymentEnvironment: Environments/{{$app}}/Local Docker Engine
               - name: Deploy {{$app}} application frontend
                 type: xldeploy.Deploy
-                server: XL Deploy
+                server: {{.XLDServerSharedConfig}}
                 deploymentPackage:  {{$app}}/{{$app}}-frontend/1.0
                 deploymentEnvironment: Environments/{{$app}}/Local Docker Engine
           - name: Test
