@@ -19,7 +19,7 @@ spec:
             tasks:
               - name: Deploy {{$app}} application backend
                 type: xldeploy.Deploy
-                server: XL Deploy
+                server: {{XLDServerSharedConfig}}
                 deploymentPackage:  {{$app}}/{{$app}}-backend/1.0
                 deploymentEnvironment: Environments/{{$app}}/Local Docker Engine
               - name: Deploy {{$app}} application frontend
