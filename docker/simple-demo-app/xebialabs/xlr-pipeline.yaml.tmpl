@@ -42,9 +42,9 @@ spec:
             tasks:
               - name: Undeploy {{$app}} application frontend
                 type: xldeploy.Undeploy
-                server: XL Deploy
+                server: {{.XLDServerSharedConfig}}
                 deployedApplication: Environments/{{$app}}/Local Docker Engine/{{$app}}-frontend
               - name: Undeploy {{$app}} application backend
                 type: xldeploy.Undeploy
-                server: XL Deploy
+                server: {{.XLDServerSharedConfig}}
                 deployedApplication: Environments/{{$app}}/Local Docker Engine/{{$app}}-backend
