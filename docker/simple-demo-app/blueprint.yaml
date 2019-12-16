@@ -31,6 +31,10 @@ spec:
     type: Input
     prompt: What is the Docker Image (repo and path) for the Frontend service?
     default: xebialabsunsupported/rest-o-rant-web
+  - name: XLDServerSharedConfig
+    type: Input
+    prompt: What is the name of XL Deploy server configured under shared configuration?
+    default: XL Deploy
 
   - name: GenerateDockerComposeSetup
     type: Confirm
