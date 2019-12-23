@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-docker-service
+  namespace: default
+  labels:
+    app: hello-docker
+spec:
+  selector:
+    app: hello-docker
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-docker-deployment
+  namespace: default
+  labels:
+    app: hello-docker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-docker
+  template:
+    metadata:
+      labels:
+        app: hello-docker
+    spec:
+      containers:
+      - name: hello-docker
+        image: hello-docker:latest
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "250m"
+          limits:
+            memory: "64Mi"
+            cpu: "500m"

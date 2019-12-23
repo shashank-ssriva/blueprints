@@ -66,10 +66,10 @@ spec:
 
       - name: Run Jenkins build
         type: jenkins.Build
-        server: Jenkins
+        #server: Jenkins
         jobName: Build and Publish Docker Image
         tags:
-        
+
     - name: Deploy Application
       type: xlrelease.Phase
       tasks:
