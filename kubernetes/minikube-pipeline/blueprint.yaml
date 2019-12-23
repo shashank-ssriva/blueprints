@@ -2,12 +2,12 @@ apiVersion: xl/v2
 kind: Blueprint
 
 metadata:
-  name: Kubernetes-Multicloud-Pipeline
+  name: Kubernetes-Minikube-Pipeline
   description: |
-    An end-to-end blueprint that composes infrastructure (EKS / AKS / GKE), application (Kubernetes) and a pipeline.
+    An end-to-end blueprint that composes infrastructure (Minikube), application (Kubernetes) and a pipeline.
   author: XebiaLabs
   version: 2.0
-  instructions: Please read the generated file "xebialabs/USAGE-multicloud-pipeline.md" for further usage instructions.
+  instructions: Please read the generated file "xebialabs/USAGE-minikube-pipeline.md" for further usage instructions.
 
 spec:
   parameters:
@@ -30,7 +30,7 @@ spec:
   - name: XLDUrlForXLR
     type: Input
     prompt: XL Deploy URL for XL Release (This will only be used in the XL Release template)
-    default: http://xl-deploy:4516
+    default: http://localhost:4516
 
   - name: Namespace
     type: Input
@@ -107,9 +107,9 @@ spec:
   files:
   # XebiaLabs
   - path: xebialabs.yaml.tmpl
-  - path: xebialabs/USAGE-multicloud-pipeline.md.tmpl
-  - path: xebialabs/multicloud-pipeline.yaml.tmpl
+  - path: xebialabs/USAGE-minikube-pipeline.md.tmpl
+  - path: xebialabs/minikube-pipeline.yaml.tmpl
     writeIf: !expr "Provider != 'EKS'"
-  - path: xebialabs/multicloud-pipeline-aws.yaml.tmpl
+  - path: xebialabs/minikube-pipeline-aws.yaml.tmpl
     writeIf: !expr "Provider == 'EKS'"
-    renameTo: xebialabs/multicloud-pipeline.yaml.tmpl
+    renameTo: xebialabs/minikube-pipeline.yaml.tmpl

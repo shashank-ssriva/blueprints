@@ -108,11 +108,23 @@ spec:
           deploymentPackage: "{{$clusterName}}/EKS-CLOUDFORMATION/{{$clusterName}}-k8s-configmap/1.0.0"
           deploymentEnvironment: Environments/{{$clusterName}}/{{$clusterName}}-master-EKSCluster-kube-system
 
+    - name: Build & Publish Docker Image
+      type: xlrelease.Phase
+      tasks:
+
+      - name: Run Jenkins build
+        type: jenkins.Build
+        server: Jenkins
+        jobName: Build and Publish Docker Image
+        tags:
+        - {{.NamespaceTag}}
+
+
     - name: Deploy Application
       type: xlrelease.Phase
       tasks:
 
-      - name: Deploy node
+      - name: Deploy K8s Application
         type: xldeploy.Deploy
         server: XL Deploy
         deploymentPackage: {{ .KubernetesApplicationName }}/{{ .KubernetesDeploymentPackageVersion }}

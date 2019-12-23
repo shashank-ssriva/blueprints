@@ -42,7 +42,7 @@ spec:
     - name: Provision Infrastructure
       type: xlrelease.Phase
       tasks:
-
+      
       - name: Provision the cluster
         type: xldeploy.Deploy
         server: XL Deploy
@@ -59,6 +59,17 @@ spec:
         ciProperty: tags
         propertyValue: '[ "{{.NamespaceTag}}" ]'
     {{- end}}
+
+    - name: Build & Publish Docker Image
+      type: xlrelease.Phase
+      tasks:
+
+      - name: Run Jenkins build
+        type: jenkins.Build
+        server: Jenkins
+        jobName: Build and Publish Docker Image
+        tags:
+        
     - name: Deploy Application
       type: xlrelease.Phase
       tasks:
